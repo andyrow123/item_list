@@ -48,13 +48,13 @@ RSpec.describe List do
   context '#find' do
     before(:each) do
       items.each do |item|
-        allow(item).to receive(:include?).and_return(item)
+        # allow(item).to receive(:include?).and_return(item)
         list_full.add(item)
       end
     end
 
     it 'should find and return a list item' do
-      expect(list_full.find(items[0])).to eq [items[0]]
+      expect(list_full.find(items[0])).to eq items[0]
     end
   end
 

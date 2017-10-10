@@ -32,7 +32,7 @@ class List
   end
 
   def find(item)
-    all.select { |arr| arr == item }
+    all.detect { |arr| arr == item }
   end
 
   private
