@@ -1,5 +1,6 @@
 require 'item_list_printer'
 
+# List
 class List
   attr_reader :items
 
@@ -8,13 +9,13 @@ class List
   end
 
   def add(item)
-    fail 'Already exists in list' if found?(item)
+    raise 'Already exists in list' if found?(item)
     @items << item
     'Success'
   end
 
   def remove(item)
-    fail 'Not found in list' unless found?(item)
+    raise 'Not found in list' unless found?(item)
     @items.delete(item)
     'Success'
   end
