@@ -27,8 +27,12 @@ class List
     item_list_printer.to_summary(all, keys)
   end
 
-  def get(index)
+  def get_by_index(index)
     all[index]
+  end
+
+  def find(item)
+    all.select { |arr| arr == item }
   end
 
   private

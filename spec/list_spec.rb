@@ -16,7 +16,7 @@ RSpec.describe List do
 
   context '#initialize' do
     it 'creates a list with no items' do
-      expect(list_empty.get(0)).to be_nil
+      expect(list_empty.get_by_index(0)).to be_nil
     end
   end
 
@@ -45,8 +45,20 @@ RSpec.describe List do
     end
   end
 
-  context 'showing items' do
+  context '#find' do
+    before(:each) do
+      items.each do |item|
+        allow(item).to receive(:include?).and_return(item)
+        list_full.add(item)
+      end
+    end
 
+    it 'should find and return a list item' do
+      expect(list_full.find(items[0])).to eq [items[0]]
+    end
+  end
+
+  context 'showing items' do
     context 'as a string' do
       let(:item_list_printer_module) { double(:item_list_printer_module) }
 
@@ -90,7 +102,7 @@ RSpec.describe List do
       end
     end
     it 'gets item at index' do
-      expect(list_full.get(0)).to_not be_nil
+      expect(list_full.get_by_index(0)).to_not be_nil
     end
   end
 end
